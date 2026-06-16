@@ -14,17 +14,13 @@ def bmi_calculator(height: float, weight: float, system: str = "metric") -> dict
     else:
         raise ValueError("invalid measurement system")
 
-    if not isinstance(height, (int, float)):
-        raise ValueError("height must be a number")
-    if not isinstance(weight, (int, float)):
-        raise ValueError("weight must be a number")
-    if height <= 0:
-        raise ValueError("height should be a positive number")
-    if weight <= 0:
-        raise ValueError("weight should be a positive number")
+    if not isinstance(height, (int, float)) or not isinstance(weight, (int, float)):
+        raise ValueError("height and weight must be numbers")
+    if height <= 0 or weight <= 0:
+        raise ValueError("height and weight must be positive numbers")
 
-    #short-circuit evaluation : program stops evaluating the expression once it determines the output
-    #for example : true or expression -> expression is not evaluated/executes
+    # short-circuit evaluation : program stops evaluating the expression once it determines the output
+    # for example : true or expression -> expression is not evaluated/executes
     #              false and expression-> expression is not evaluated/executed
 
     bmi: float = round(
@@ -45,6 +41,3 @@ def bmi_calculator(height: float, weight: float, system: str = "metric") -> dict
     label = "looks good" if category == "Normal weight" else "consult a doctor"
 
     return {"bmi": bmi, "category": category, "label": label}
-
-
-
