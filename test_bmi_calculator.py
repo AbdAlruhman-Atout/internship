@@ -41,6 +41,7 @@ def test_string_input():
     with pytest.raises(ValueError):
         bmi_calculator("tall", 70)
 
+
 @pytest.mark.parametrize(
     "height, weight, expected_bmi, expected_category",
     [
