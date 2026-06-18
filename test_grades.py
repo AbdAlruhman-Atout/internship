@@ -55,3 +55,18 @@ def test_find_student_found():
 def test_find_student_not_found():
     result = find_student(students, "John")
     assert result is None
+
+
+@pytest.mark.parametrize(
+    " passing_grade, student_name, expected_result",
+    [
+        (80, "Alice", "Pass"),
+        (75, "Bob", "Fail"),
+        (60, "Carol", "Pass"),
+        (50, "Frank", "Pass"),
+        (70, "David", "Fail"),
+    ],
+)
+def test_get_pass_fail(passing_grade, student_name, expected_result):
+    result = get_pass_fail(students, passing_grade)
+    assert result[student_name] == expected_result
