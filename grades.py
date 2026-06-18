@@ -1,3 +1,6 @@
+from functools import reduce
+from importlib.metadata import distribution
+
 students = [
     {"name": "Alice", "grade": 88},
     {"name": "Bob", "grade": 72},
@@ -32,7 +35,8 @@ def get_unique_grades(students):
 def summarize(students):
     total_number = len(students)
     grades = list(map(lambda student: student["grade"], students))
-    average = round(sum(grades) / total_number, 2)
+    grades_sum = reduce(lambda x, y: x + y, grades)
+    average = round(grades_sum / total_number, 2)
     has_top_scorer = any(student["grade"] > 90 for student in students)
     all_passed = all(student["grade"] >= 60 for student in students)
     passing_students = filter(lambda student: student["grade"] >= 60, students)
@@ -77,3 +81,29 @@ def has_student(
     else:
         # else runs only if the loop finishes without finding a match
         return False
+
+
+def get_grade_distribution(students):
+    distribution = {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "F": 0,
+    }
+
+    for student in students:
+        grade = student["grade"]
+
+        if grade >= 90:
+            distribution["A"] += 1
+        elif grade >= 80:
+            distribution["B"] += 1
+        elif grade >= 70:
+            distribution["C"] += 1
+        elif grade >= 60:
+            distribution["D"] += 1
+        else:
+            distribution["F"] += 1
+
+    return distribution
