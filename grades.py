@@ -1,5 +1,4 @@
 from functools import reduce
-from importlib.metadata import distribution
 
 students = [
     {"name": "Alice", "grade": 88},
