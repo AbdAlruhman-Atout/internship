@@ -1,5 +1,5 @@
 import pytest
-from grades import *
+from task3.grades import *
 
 
 def test_top_students_count():
