@@ -16,9 +16,7 @@ def strong_password(password: str) -> bool:
         raise WeakPasswordError("Password must contain at least one digit.")
 
     if not any(char in SPECIAL_CHARS for char in password):
-        raise WeakPasswordError(
-            "Password must contain at least one special character."
-        )
+        raise WeakPasswordError("Password must contain at least one special character.")
 
     return True
 

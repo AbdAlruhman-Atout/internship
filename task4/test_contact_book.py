@@ -1,5 +1,5 @@
 import pytest
-from contact_book import *
+from task4.contact_book import *
 
 
 def sample_contacts():

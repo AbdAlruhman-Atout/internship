@@ -1,6 +1,6 @@
 import pytest
 
-from bmi_calculator import bmi_calculator
+from task2.bmi_calculator import bmi_calculator
 
 
 def test_normal():
